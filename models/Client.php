@@ -3,7 +3,7 @@
 namespace app\models;
 
 use Yii;
-use yii\behaviors\TimestampBehavior;
+//use yii\behaviors\TimestampBehavior;
 
 /**
  * This is the model class for table "clients".
@@ -49,7 +49,7 @@ class Client extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['firstname', 'lastname', 'birthday', 'tel','email'], 'required'],
+            [['firstname', 'lastname', 'birthday', 'tel','email','citycode'], 'required'],
             [['datec'], 'safe'],
             [['firstname', 'lastname', 'middlename'], 'string', 'max' => 255],
         ];
@@ -62,6 +62,7 @@ class Client extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
+            'citycode' => 'Город',
             'firstname' => 'Имя',
             'lastname' => 'Фамилия',
             'middlename' => 'Отчество',

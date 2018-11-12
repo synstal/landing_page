@@ -10,7 +10,11 @@ use yii\widgets\ActiveForm;
 <div class="clients-index">
 
     <?php $form = ActiveForm::begin(); ?>
+<?php 
+ $params = ['prompt' => 'Выберете город'];
 
+       echo $form->field($model, 'citycode')->dropDownList($items_city,$params);  
+?>
         <?= $form->field($model, 'firstname') ?>
         <?= $form->field($model, 'lastname') ?>
         <?= $form->field($model, 'middlename') ?>

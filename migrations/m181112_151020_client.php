@@ -17,6 +17,7 @@ class m181112_151020_client extends Migration
             'id' => $this->primaryKey(),
 //            'title' => $this->string()->notNull(),
 //            'content' => $this->text(),
+            'citycode' => $this->string()->notNull(),
             'firstname' => $this->string()->notNull(),
             'lastname' => $this->string()->notNull(),
             'middlename' => $this->string()->notNull(),

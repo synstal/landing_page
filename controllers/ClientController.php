@@ -3,9 +3,11 @@
 namespace app\controllers;
 use \yii\web\Controller;
 use \app\models\Client;
+use \app\models\City;
 use Yii;
 use yii\helpers\Html;
 use yii\helpers\Url;
+use yii\helpers\ArrayHelper;
 
 class ClientController extends Controller
 {
@@ -15,6 +17,7 @@ class ClientController extends Controller
 //        die;
         Yii::setAlias('@webroot', '/');
         $model = new Client;
+        $model_city = new City;
         if(!empty(Yii::$app->request->post())){
             $postdata=Yii::$app->request->post();
             $vowels = array("(", ")", "_", " ", "+");
@@ -39,7 +42,11 @@ class ClientController extends Controller
                 }
             }
         }
-        return $this->render('index', compact('model'));
+        // получаем всех авторов
+    $cites = City::find()->all();
+// формируем массив, с ключем равным полю 'id' и значением равным полю 'name' 
+    $items_city = ArrayHelper::map($cites,'code','name');
+        return $this->render('index', compact('model','items_city'));
     }
 
 }
