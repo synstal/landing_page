@@ -34,7 +34,9 @@ class Client extends \yii\db\ActiveRecord
 //                }
 //            ]
 //        ];
-//    } 
+//    }
+    public $iagree_term;
+    public $iagree_email;
     /**
      * {@inheritdoc}
      */
@@ -49,9 +51,12 @@ class Client extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['firstname', 'lastname', 'birthday', 'tel','email','citycode'], 'required'],
+            [['firstname', 'lastname', 'birthday', 'tel','email','citycode', 'iagree_term'], 'required'],
             [['datec'], 'safe'],
             [['firstname', 'lastname', 'middlename'], 'string', 'max' => 255],
+            ['email', 'email'],
+            ['iagree_term', 'compare', 'compareValue' => 1, 'message' => 'Выствите чебокс, иначе форма не отправится!'], 
+
         ];
     }
 
@@ -62,6 +67,8 @@ class Client extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
+            'iagree_term' => '',
+            'iagree_email' => '',
             'citycode' => 'Город',
             'firstname' => 'Имя',
             'lastname' => 'Фамилия',
